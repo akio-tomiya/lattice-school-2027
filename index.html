@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#14263a">
+    <meta name="description" content="格子場の理論と格子 QCD の数値計算を 1 日で学ぶミニスクール。2027年2月1日（月）、筑波大学東京キャンパスで開催。">
+    <title>格子ミニスクール 2027</title>
+    <style>
+      :root {
+        color-scheme: light;
+        font-family: "Hiragino Sans", "Hiragino Kaku Gothic ProN", sans-serif;
+        --ink: #14263a;
+        --muted: #5a6b7b;
+        --accent: #1f6f78;
+        --line: #d6dde0;
+        --paper: #f8f7f3;
+        --card: #ffffff;
+        --todo: #fff1c2;
+      }
+      * { box-sizing: border-box; }
+      body { margin: 0; background: var(--paper); color: var(--ink); line-height: 1.8; }
+      a { color: var(--accent); text-underline-offset: .25em; }
+      .wrap { width: min(100% - 2rem, 960px); margin-inline: auto; }
+      .hero { padding: 48px 0 88px; background: var(--ink); color: #fff; }
+      .hero .kicker { margin: 0; color: #9fc6cb; font-size: .82rem; font-weight: 700; letter-spacing: .14em; }
+      h1 { margin: 12px 0 0; font-size: clamp(2rem, 6vw, 3.6rem); line-height: 1.25; letter-spacing: -.03em; }
+      .hero .en { margin: 6px 0 0; color: #c9d6dd; font-size: 1rem; }
+      .hero .lead { max-width: 640px; margin: 22px 0 0; color: #dbe5e8; }
+      .facts {
+        margin-top: -56px; display: grid; grid-template-columns: repeat(3, 1fr);
+        background: var(--card); border: 1px solid var(--line); box-shadow: 0 14px 36px rgba(20,38,58,.08);
+      }
+      .facts > div { padding: 20px 24px; }
+      .facts > div + div { border-left: 1px solid var(--line); }
+      .label { margin: 0 0 4px; color: var(--accent); font-size: .74rem; font-weight: 800; letter-spacing: .12em; }
+      .big { margin: 0; font-size: 1.2rem; font-weight: 800; line-height: 1.5; }
+      .small { margin: 4px 0 0; color: var(--muted); font-size: .88rem; }
+      section { padding: 64px 0 0; }
+      h2 { margin: 0 0 18px; font-size: clamp(1.4rem, 3vw, 1.9rem); }
+      p { max-width: 760px; }
+      table { width: 100%; border-collapse: collapse; background: var(--card); border: 1px solid var(--line); }
+      th, td { padding: 12px 16px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+      th { width: 9.5em; color: var(--muted); font-weight: 700; white-space: nowrap; }
+      tr.break td, tr.break th { color: var(--muted); background: #f1f3f2; font-size: .9rem; padding: 6px 16px; }
+      .who { display: block; color: var(--muted); font-size: .88rem; }
+      .people { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+      .person { padding: 18px 20px; background: var(--card); border: 1px solid var(--line); }
+      .person b { display: block; font-size: 1.05rem; }
+      .person span { color: var(--muted); font-size: .9rem; }
+      .todo { background: var(--todo); padding: 0 .25em; }
+      footer { margin-top: 72px; padding: 28px 0 40px; border-top: 1px solid var(--line); color: var(--muted); font-size: .88rem; }
+      @media (max-width: 720px) {
+        .facts, .people { grid-template-columns: 1fr; }
+        .facts > div + div { border-left: 0; border-top: 1px solid var(--line); }
+        th { width: auto; white-space: normal; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="hero">
+      <div class="wrap">
+        <p class="kicker">LATTICE MINI SCHOOL 2027</p>
+        <h1>格子ミニスクール</h1>
+        <p class="en">Lattice 1 Day School</p>
+        <p class="lead">格子場の理論の基礎から、格子 QCD の数値計算、物理量の解析までを 1 日で学びます。最後のコマでは、Julia で書かれた格子 QCD のコード（JuliaQCD）を実際に動かします。</p>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <div class="facts">
+        <div>
+          <p class="label">日時</p>
+          <p class="big">2027年2月1日（月）</p>
+          <p class="small">9:30〜17:50</p>
+        </div>
+        <div>
+          <p class="label">会場</p>
+          <p class="big">筑波大学東京キャンパス<br>118講義室</p>
+          <p class="small">東京都文京区大塚3-29-1<br>東京メトロ丸ノ内線 茗荷谷駅から徒歩約3分</p>
+        </div>
+        <div>
+          <p class="label">参加</p>
+          <p class="big">無料・要申込</p>
+          <p class="small">定員に限りがあるため先着順</p>
+        </div>
+      </div>
+
+      <section id="about">
+        <h2>概要</h2>
+        <p>格子場の理論は、相互作用のある場の量子論を、時空を格子に区切って定義する方法です。積分をリーマン和の極限として定義するのと同じように、格子の間隔をゼロに近づけた極限として連続の理論を定めます。強い相互作用の理論である QCD は、この方法で計算機を使って非摂動的に調べられます。</p>
+        <p>このスクールでは、格子場の理論の基礎、格子上の QCD、ハイブリッド・モンテカルロ法（HMC）などの数値計算アルゴリズム、物理量の計算と解析を講義で扱い、最後にハンズオンで実際に計算を動かします。</p>
+        <p>対象は、格子 QCD をこれから始める大学院生・学部生と、格子計算の中身を知りたい周辺分野の研究者です。<span class="todo">前提知識：場の量子論の初歩（要確認）</span></p>
+      </section>
+
+      <section id="program">
+        <h2>プログラム</h2>
+        <table>
+          <tbody>
+            <tr><th>9:30–10:45</th><td>開会、格子場の理論の基礎</td></tr>
+            <tr class="break"><th>10:45–11:00</th><td>休憩</td></tr>
+            <tr><th>11:00–12:15</th><td>格子上の QCD</td></tr>
+            <tr class="break"><th>12:15–13:30</th><td>昼休み</td></tr>
+            <tr><th>13:30–14:45</th><td>数値計算アルゴリズム（HMC など）</td></tr>
+            <tr class="break"><th>14:45–15:00</th><td>休憩</td></tr>
+            <tr><th>15:00–16:15</th><td>物理量計算と解析</td></tr>
+            <tr class="break"><th>16:15–16:30</th><td>休憩</td></tr>
+            <tr><th>16:30–17:45</th><td>ハンズオン</td></tr>
+            <tr><th>17:45–17:50</th><td>閉会</td></tr>
+          </tbody>
+        </table>
+        <p class="small">ハンズオンでは、ご自身のノート PC を使います。事前の準備（Julia の導入など）は、参加登録をした方に別途お知らせします。<span class="todo">形式は要確認</span></p>
+      </section>
+
+      <section id="register">
+        <h2>参加申込</h2>
+        <p>参加費は無料です。<a href="https://docs.google.com/forms/d/e/1FAIpQLSeyW6ihyhq7Itb3UojthZk1Y9Oh0qGREQg_rvZWkBEDVzQOGw/viewform">参加登録フォーム</a>からお申し込みください。会場の席に限りがあるため、先着順で受け付けます。フォームを送信した時点では、参加は確定しません。参加が確定したかどうかは、世話人からメールでお知らせします。</p>
+        <p>登録の締切は、決まりしだいこのページでお知らせします。</p>
+      </section>
+
+      <section id="organizers">
+        <h2>主催・共催・協力</h2>
+        <p>主催：科研費 学術変革領域研究(A)「学習物理学」の創成 計画研究「計算物理学と機械学習の融合」（22H05112）<br>
+        共催：次世代計算科学グランドリーチプログラム（区分B）「GPU・AI 時代の格子 QCD エコシステム構築」<br>
+        協力：JST ARiSE「数理物理統合AIの創成」（JPMJAR2633）、JST BOOST「機械学習技術を用いた場の量子論の計算法の確立」（JPMJBY24F1）、科研費 基盤研究(B)（26K00651）、科研費 基盤研究(C)（25K07287）</p>
+      </section>
+
+      <section id="contact">
+        <h2>問い合わせ</h2>
+        <p>大野 浩史（筑波大学 計算科学研究センター）<br>hohno@ccs.tsukuba.ac.jp</p>
+      </section>
+    </main>
+
+    <footer>
+      <div class="wrap">格子ミニスクール 2027 世話人</div>
+    </footer>
+  </body>
+</html>
